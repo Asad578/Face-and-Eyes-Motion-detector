@@ -1,4 +1,5 @@
 import cv2
+import os
 import numpy as np
 from config.settings import EYE_MOVEMENT_THRESHOLD
 
@@ -8,13 +9,13 @@ def is_eye_movement_suspicious(frame):
     Uses simple eye detection based on face region analysis.
     Returns True if gaze direction is suspicious (looking away).
     """
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    cascade_path = os.path.join(current_dir, "haarcascade_frontalface_default.xml")
+
+    eye_cascade_path = os.path.join(current_dir, "haarcascade_eye.xml")
     # Load face and eye cascade classifiers
-    face_cascade = cv2.CascadeClassifier(
-        cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
-    )
-    eye_cascade = cv2.CascadeClassifier(
-        cv2.data.haarcascades + "haarcascade_eye.xml"
-    )
+    face_cascade = cv2.CascadeClassifier(cascade_path)
+    eye_cascade = cv2.CascadeClassifier(eye_cascade_path)
     
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)

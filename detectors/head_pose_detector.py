@@ -1,4 +1,5 @@
 import cv2
+import os
 
 def is_head_straight(frame):
     """
@@ -6,10 +7,11 @@ def is_head_straight(frame):
     Uses face detection bounding box to estimate head orientation.
     Returns True if head is straight, False otherwise, None if no face detected.
     """
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    cascade_path = os.path.join(current_dir, "haarcascade_frontalface_default.xml")
+
     # Load face cascade classifier
-    face_cascade = cv2.CascadeClassifier(
-        cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
-    )
+    face_cascade = cv2.CascadeClassifier(cascade_path)
     
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
