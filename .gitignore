@@ -1,0 +1,58 @@
+# ==========================
+# Python
+# ==========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# ==========================
+# Virtual environments
+# ==========================
+venv/
+.env/
+.env.*
+ENV/
+.venv/
+
+# ==========================
+# OS files
+# ==========================
+.DS_Store
+Thumbs.db
+
+# ==========================
+# IDE / Editor
+# ==========================
+.vscode/
+.idea/
+
+# ==========================
+# Logs & temp files
+# ==========================
+*.log
+logs/
+temp/
+tmp/
+
+# ==========================
+# Model files (large binaries)
+# ==========================
+*.weights
+*.pt
+*.onnx
+*.tflite
+models/*.dat
+
+# ==========================
+# Media / evidence captures
+# ==========================
+captures/
+screenshots/
+videos/
+
+# ==========================
+# OpenCV runtime junk
+# ==========================
+*.avi
+*.mp4
